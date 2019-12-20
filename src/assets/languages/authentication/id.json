@@ -1,0 +1,9 @@
+{
+  "signin": {
+    "placeholder_email": "Email / Nomor Telepon",
+    "placeholder_password": "Password",
+    "submit": "Masuk",
+    "forgot_password": "Lupa Password",
+    "accountless": "Tidak memiliki akun ?"
+  }
+}

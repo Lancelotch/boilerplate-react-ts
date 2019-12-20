@@ -1,0 +1,9 @@
+{
+  "signin": {
+    "placeholder_email": "Email / Phone Number",
+    "placeholder_password": "Password",
+    "submit": "Sign In",
+    "forgot_password": "Forgot Password",
+    "accountless": "Don't have an account ?"
+  }
+}
