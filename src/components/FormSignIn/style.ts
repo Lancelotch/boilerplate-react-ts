@@ -5,8 +5,12 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     marginTop: theme.spacing(3)
   },
+  textField: {
+    marginTop: theme.spacing(1)
+  },
   submit: {
-    margin: theme.spacing(3, 0, 3)
+    //background: theme.palette.primary.main,
+    margin: theme.spacing(6, 0, 1)
   }
 }));
 
