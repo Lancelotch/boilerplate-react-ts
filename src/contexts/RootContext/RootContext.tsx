@@ -58,8 +58,7 @@ const RootContext: React.FC<IProps> = ({ children }) => {
     <Fragment>
       <CreateRootContext.Provider
         value={{
-          ...state,
-          handleSignIn
+          ...state
         }}
       >
         {children}
