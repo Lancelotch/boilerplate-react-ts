@@ -12,6 +12,7 @@ interface IProps {
 interface IState {
   isAuthenticated: boolean;
   language: string;
+  handleSignIn?: (payload: object)=>void
 }
 
 interface IAction {
@@ -46,11 +47,10 @@ const RootContext: React.FC<IProps> = ({ children }) => {
     initialState
   );
 
-  const handleSignIn:(payload: any) => void =
-    function(payload){
-        dispatch({
-            type: ActionType.SignIn,
-            payload: payload
+  const handleSignIn: (payload: any) => void = function(payload) {
+    dispatch({
+      type: ActionType.SignIn,
+      payload: payload
     });
   };
 
@@ -58,7 +58,8 @@ const RootContext: React.FC<IProps> = ({ children }) => {
     <Fragment>
       <CreateRootContext.Provider
         value={{
-          ...state
+          ...state,
+          handleSignIn
         }}
       >
         {children}

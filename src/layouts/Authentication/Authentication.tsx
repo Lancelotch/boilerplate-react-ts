@@ -12,10 +12,10 @@ const Authentication: React.FC<Props> = ({ children }) => {
   const classes = useStyles();
   return (
     <Grid container className={classes.root}>
-      <Grid item xs={12} sm={12} md={4} lg={4}>
+      <Grid item xs={12} sm={12} md={5} lg={5}>
         {children}
       </Grid>
-      <Grid item md={8} lg={8}>
+      <Grid item md={7} lg={7}>
         <Hidden only={["xs", "sm"]}>
         <Box borderLeft={2} className={classes.root} borderColor="primary.light">
           <Grid item container alignItems="center" justify="center" spacing={2}>

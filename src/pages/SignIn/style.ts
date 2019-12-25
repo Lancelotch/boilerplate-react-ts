@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: any) => ({
   form: {
-    margin: theme.spacing(0, 8),
+    margin: theme.spacing(0, 10),
     display: "flex",
     flexDirection: "column",
     alignItems: "center"
