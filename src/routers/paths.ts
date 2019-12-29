@@ -1,9 +1,11 @@
 const LOGIN = '/sign-in';
 const OVERVIEW = '/overview';
+const CONTENT = '/content';
 
 const paths = {
     LOGIN,
-    OVERVIEW
+    OVERVIEW,
+    CONTENT
 }
 
 export default paths;

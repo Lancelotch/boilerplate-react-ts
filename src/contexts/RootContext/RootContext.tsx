@@ -12,7 +12,8 @@ interface IProps {
 interface IState {
   isAuthenticated: boolean;
   language: string;
-  handleSignIn?: (payload: object)=>void
+  handleSignIn?: (payload: object)=>void;
+  handleSignOut?: ()=>void;
 }
 
 interface IAction {
