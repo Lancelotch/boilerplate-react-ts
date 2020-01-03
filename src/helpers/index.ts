@@ -1,3 +1,1 @@
-export const ex = ()=>{
-    return null;
-}
+export { default as months } from './months';

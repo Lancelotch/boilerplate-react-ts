@@ -1,5 +1,4 @@
 import React from "react";
-import { Body } from "./components";
 import HideOnScroll from "../../components/HideOnScroll";
 import {
   CssBaseline,
@@ -9,6 +8,8 @@ import useStyles from "./style";
 import CardAnalytic from "../../components/CardAnalytic";
 import LineChart from "../../components/LineChart";
 import { HeaderContent } from "../../components";
+import { Body } from "../../layouts/MainContent";
+import { dummyAnalytics } from "../../helpers/dummyAnalytics";
 
 const Overview: React.FC = () => {
   const classes = useStyles();
@@ -44,38 +45,18 @@ const Overview: React.FC = () => {
       </HideOnScroll>
       <Body>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3} lg={3}>
-            <CardAnalytic
-              title="Total Engagement"
-              value={1500}
-              progress="up"
-              progressValue={2}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={3}>
-            <CardAnalytic
-              title="Total Engagement"
-              value={1500}
-              progress="down"
-              progressValue={2}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={3}>
-            <CardAnalytic
-              title="Total Engagement"
-              value={1500}
-              progress="down"
-              progressValue={2}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={3}>
-            <CardAnalytic
-              title="Total Engagement"
-              value={1500}
-              progress="up"
-              progressValue={2}
-            />
-          </Grid>
+        {dummyAnalytics.map(
+            ({ id, title, value, progress, progressValue }) => (
+              <Grid item xs={12} sm={6} md={3} lg={3} key={id}>
+                <CardAnalytic
+                  title={title}
+                  value={value}
+                  progress={progress}
+                  progressValue={progressValue}
+                />
+              </Grid>
+            )
+          )}
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <LineChart />
           </Grid>

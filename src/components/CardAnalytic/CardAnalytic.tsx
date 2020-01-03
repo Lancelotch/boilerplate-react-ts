@@ -15,7 +15,7 @@ import {
 interface Props {
   title: string;
   value: number;
-  progress: "up" | "down" | "netral";
+  progress: "up" | "down" | "netral" | string;
   progressValue: number;
   className?: string;
 }

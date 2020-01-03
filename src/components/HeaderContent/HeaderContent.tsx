@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useStyles from "./style";
 import AddIcon from "@material-ui/icons/Add";
 import DateRangeOutlinedIcon from "@material-ui/icons/DateRangeOutlined";
@@ -14,10 +14,11 @@ import {
 } from "@material-ui/core";
 import Select from "../CustomSelect";
 import {
-  DateRangePicker,
-  DateRange
+  DateRangePicker
 } from "@matharumanpreet00/react-daterange-picker";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import { months } from "../../helpers";
+import currentDate from "../../helpers/currentDate";
 
 interface Props {
   onClickObject: () => void;
@@ -34,11 +35,13 @@ const HeaderContent: React.FC<Props> = ({
   onChangeDate,
   onDownload
 }) => {
+  useEffect(()=>{
+    const today = `${currentDate()} - ${currentDate()}`;
+    setDateRange(today);
+  },[])
   const classes = useStyles();
   const [dateRange, setDateRange] = useState("");
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-    null
-  );
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -49,9 +52,10 @@ const HeaderContent: React.FC<Props> = ({
   };
 
   const handleChangeDate = (date: any) => {
-    const startDate = `${date.startDate.getDay()}/${date.startDate.getMonth()+1}/${date.startDate.getFullYear()}`;
-    const endDate = `${date.endDate.getDay()}/${date.endDate.getMonth()+1}/${date.endDate.getFullYear()}`;
+    const startDate = `${date.startDate.getDate()} ${months(date.startDate.getMonth())} ${date.startDate.getFullYear()}`;
+    const endDate = `${date.endDate.getDate()} ${months(date.endDate.getMonth())} ${date.endDate.getFullYear()}`;
     setDateRange(`${startDate} - ${endDate}`);
+    handleClose();
   }
 
   const open = Boolean(anchorEl);
