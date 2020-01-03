@@ -1,8 +1,14 @@
-import React, {useState} from "react";
-import { Header } from "./components";
+import React from "react";
+import { Body } from "./components";
 import HideOnScroll from "../../components/HideOnScroll";
-import { CssBaseline } from "@material-ui/core";
-import useStyles from './style';
+import {
+  CssBaseline,
+  Grid
+} from "@material-ui/core";
+import useStyles from "./style";
+import CardAnalytic from "../../components/CardAnalytic";
+import LineChart from "../../components/LineChart";
+import { HeaderContent } from "../../components";
 
 const Overview: React.FC = () => {
   const classes = useStyles();
@@ -25,9 +31,9 @@ const Overview: React.FC = () => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <HideOnScroll threshold={200}>
+      <HideOnScroll threshold={80}>
         <div className={classes.header}>
-          <Header
+          <HeaderContent
             onClickObject={handleClickObject}
             onClickTopic={handleClickTopic}
             onSelectTopic={handleSelectTopic}
@@ -36,69 +42,54 @@ const Overview: React.FC = () => {
           />
         </div>
       </HideOnScroll>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
-      <p>TEst</p>
+      <Body>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6} md={3} lg={3}>
+            <CardAnalytic
+              title="Total Engagement"
+              value={1500}
+              progress="up"
+              progressValue={2}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3} lg={3}>
+            <CardAnalytic
+              title="Total Engagement"
+              value={1500}
+              progress="down"
+              progressValue={2}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3} lg={3}>
+            <CardAnalytic
+              title="Total Engagement"
+              value={1500}
+              progress="down"
+              progressValue={2}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3} lg={3}>
+            <CardAnalytic
+              title="Total Engagement"
+              value={1500}
+              progress="up"
+              progressValue={2}
+            />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <LineChart />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <LineChart />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <LineChart />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <LineChart />
+          </Grid>
+        </Grid>
+      </Body>
     </React.Fragment>
   );
 };

@@ -12,10 +12,8 @@ function getScrollY(scroller: any) {
 
 const useHideOnScroll = (options: any) => {
   const { threshold, scroller } = options;
-
   const scrollRef = React.useRef(0);
   const [hide, setHide] = React.useState(false);
-
   const handleScroll = React.useCallback(() => {
     const scrollY = getScrollY(scroller || window);
     const prevScrollY = scrollRef.current;
@@ -41,13 +39,13 @@ const useHideOnScroll = (options: any) => {
   return hide;
 };
 
-interface Props{
-    children: any;
-    threshold: number;
-    scroller?: number;
+interface Props {
+  children: any;
+  threshold: number;
+  scroller?: number;
 }
 
-const HideOnScroll:React.FC<Props> = (props)=> {
+const HideOnScroll: React.FC<Props> = props => {
   const { children, threshold, scroller, ...other } = props;
   const hide = useHideOnScroll({ threshold, scroller });
 
@@ -56,6 +54,6 @@ const HideOnScroll:React.FC<Props> = (props)=> {
       {children}
     </Slide>
   );
-}
+};
 
-export default HideOnScroll; 
+export default HideOnScroll;

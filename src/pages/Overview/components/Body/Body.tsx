@@ -1,7 +1,13 @@
 import React from "react";
+import useStyle from "./style";
 
-const Body: React.FC = () => {
-  return <div>Body</div>;
+interface Props {
+  children: any;
+}
+
+const Body: React.FC<Props> = ({ children }) => {
+  const classes = useStyle();
+  return <div className={classes.root}>{children}</div>;
 };
 
 export default Body;

@@ -1,0 +1,1 @@
+export { default as ObjectButton } from './Object';
