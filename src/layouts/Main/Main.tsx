@@ -6,6 +6,8 @@ import { useMediaQuery } from "@material-ui/core";
 import clsx from "clsx";
 import useStyles from "./style";
 import { Sidebar, Topbar } from "./components";
+import Objects from "./components/Objects";
+import { useObjectsContext } from "../../contexts/Objects/Objects";
 
 interface Props {
   children: any;
@@ -18,7 +20,6 @@ const Main: React.FC<Props> = ({ children }) => {
     defaultMatches: true
   });
   const [openSidebar, setOpenSidebar] = useState<boolean>(false);
-
   const handleSidebarOpen = function() {
     setOpenSidebar(true);
   };
@@ -27,6 +28,9 @@ const Main: React.FC<Props> = ({ children }) => {
     setOpenSidebar(false);
   };
   const shouldOpenSidebar = isDesktop ? true : openSidebar;
+  const { isShowObjects } = useObjectsContext();
+
+  console.log("isShowObjects", isShowObjects);
 
   return (
     <div
@@ -41,7 +45,13 @@ const Main: React.FC<Props> = ({ children }) => {
         open={shouldOpenSidebar}
         variant={isDesktop ? "persistent" : "temporary"}
       />
-      <main className={classes.content}>{children}</main>
+      <Objects
+        open={isShowObjects}
+        variant={isDesktop ? "persistent" : "temporary"}
+      />
+      <main className={classes.content}>
+        {children}
+      </main>
     </div>
   );
 };

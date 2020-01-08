@@ -1,6 +1,11 @@
 import React from 'react';
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import SettingsIcon from "@material-ui/icons/Settings";
+import TocIcon from "@material-ui/icons/Toc";
+import ForumIcon from "@material-ui/icons/Forum";
+import CompareIcon from "@material-ui/icons/Compare";
+import ViewStreamIcon from "@material-ui/icons/ViewStream";
+import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 
 interface IPages {
   title: string;
@@ -17,32 +22,32 @@ const pages: IPages[] = [
   {
     title: "Content",
     href: "/content",
-    icon: <DashboardIcon />
+    icon: <TocIcon />
   },
   {
     title: "Community",
     href: "/community",
-    icon: <DashboardIcon />
+    icon: <ForumIcon />
   },
   {
     title: "Campaign",
     href: "/campaign",
-    icon: <DashboardIcon />
+    icon: <RecordVoiceOverIcon />
   },
   {
     title: "Conversation",
     href: "/conversation",
-    icon: <DashboardIcon />
+    icon: <ForumIcon />
   },
   {
-    title: "Comparison",
+    title: "CompareIcon",
     href: "/comparison",
-    icon: <DashboardIcon />
+    icon: <CompareIcon />
   },
   {
     title: "Stream",
     href: "/stream",
-    icon: <DashboardIcon />
+    icon: <ViewStreamIcon />
   },
   {
     title: "Setting",

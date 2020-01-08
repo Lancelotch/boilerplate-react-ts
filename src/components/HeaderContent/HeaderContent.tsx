@@ -74,6 +74,7 @@ const HeaderContent: React.FC<Props> = ({
               color="primary"
               size="small"
               fullWidth
+              onClick={onClickObject}
               //className={classes.button}
             >
               <Grid container justify="space-between">
@@ -91,12 +92,12 @@ const HeaderContent: React.FC<Props> = ({
           <Grid item sm={2} md={2}>
             <Select onChange={e => console.log(e)} value={"10"} />
           </Grid>
-          <Grid item sm={4} md={4} />
-          <Grid item sm={4} md={4}>
-            <Grid container spacing={3} justify="space-between">
+          <Grid item sm={2} md={4} />
+          <Grid item sm={6} md={4}>
+            <Grid container  justify="space-between">
               <Grid item sm={1} md={1} />
               <Grid item sm={9} md={9}>
-                <ButtonGroup>
+                <ButtonGroup className={classes.float}>
                   <Button size="small" startIcon={<DateRangeOutlinedIcon />}>
                     <Typography variant="subtitle2">
                       {dateRange}
@@ -114,7 +115,7 @@ const HeaderContent: React.FC<Props> = ({
                 </ButtonGroup>
               </Grid>
               <Grid item sm={2} md={2}>
-                <Fab color="primary" size="small">
+                <Fab color="primary" size="small" className={classes.float} onClick={onDownload}>
                   <CloudDownload />
                 </Fab>
               </Grid>

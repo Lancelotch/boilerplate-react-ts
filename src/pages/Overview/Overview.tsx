@@ -1,7 +1,6 @@
 import React from "react";
 import HideOnScroll from "../../components/HideOnScroll";
 import {
-  CssBaseline,
   Grid
 } from "@material-ui/core";
 import useStyles from "./style";
@@ -31,7 +30,7 @@ const Overview: React.FC = () => {
   };
   return (
     <React.Fragment>
-      <CssBaseline />
+      <div>
       <HideOnScroll threshold={80}>
         <div className={classes.header}>
           <HeaderContent
@@ -69,8 +68,15 @@ const Overview: React.FC = () => {
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <LineChart />
           </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <LineChart />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <LineChart />
+          </Grid>
         </Grid>
       </Body>
+      </div>
     </React.Fragment>
   );
 };

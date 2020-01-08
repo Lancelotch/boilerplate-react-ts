@@ -7,13 +7,15 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Typography
+  Typography,
+  Grid
 } from "@material-ui/core";
 import useStyles from "./styles";
 import FieldContent from "../FieldContent";
 import FieldEngagement from "../FieldEngagement";
 
 interface Props {
+  title: string;
   data: any;
 }
 
@@ -33,55 +35,83 @@ const rows = [
   createData("Eclair", 262, 16.0, 24, 6.0)
 ];
 
-const TablePostmade: React.FC<Props> = ({ data }) => {
+const TablePostmade: React.FC<Props> = ({ data, title }) => {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Typography variant="subtitle2" className={classes.subTitle}>Top Postmade</Typography>
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center" size="medium" style={{ width: "5%" }}>
-                No.
-              </TableCell>
-              <TableCell align="center" size="medium" style={{ width: "55%" }}>
-                Content
-              </TableCell>
-              <TableCell align="center" size="medium" style={{ width: "10%" }}>
-                Type
-              </TableCell>
-              <TableCell align="center" size="medium" style={{ width: "10%" }}>
-                Reach
-              </TableCell>
-              <TableCell align="center" size="medium" style={{ width: "20%" }}>
-                Total Engagement
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row, index) => (
-              <TableRow key={row.name}>
-                <TableCell align="center" size="small">
-                  {index + 1}
-                </TableCell>
-                <TableCell align="left" size="small">
-                  <FieldContent />
-                </TableCell>
-                <TableCell align="center" size="small">
-                  {row.fat}
-                </TableCell>
-                <TableCell align="center" size="small">
-                  {row.carbs}
-                </TableCell>
-                <TableCell align="center" size="small">
-                  <FieldEngagement />
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <Grid container>
+        <Grid item md={12}>
+          <Typography variant="subtitle2" className={classes.subTitle}>
+            {title}
+          </Typography>
+        </Grid>
+        <Grid item md={12}>
+          <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    align="center"
+                    size="medium"
+                    style={{ width: "5%" }}
+                  >
+                    No.
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    size="medium"
+                    style={{ width: "55%" }}
+                  >
+                    Content
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    size="medium"
+                    style={{ width: "10%" }}
+                  >
+                    Type
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    size="medium"
+                    style={{ width: "10%" }}
+                  >
+                    Reach
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    size="medium"
+                    style={{ width: "20%" }}
+                  >
+                    Total Engagement
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row, index) => (
+                  <TableRow key={row.name}>
+                    <TableCell align="center" size="small">
+                      {index + 1}
+                    </TableCell>
+                    <TableCell align="left" size="small">
+                      <FieldContent />
+                    </TableCell>
+                    <TableCell align="center" size="small">
+                      {row.fat}
+                    </TableCell>
+                    <TableCell align="center" size="small">
+                      {row.carbs}
+                    </TableCell>
+                    <TableCell align="center" size="small">
+                      <FieldEngagement />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
+      </Grid>
     </React.Fragment>
   );
 };

@@ -2,8 +2,10 @@ import { colors } from '@material-ui/core';
 
 const white = '#FFFFFF';
 const black = '#000000';
+const disabled = '#dddddd';
 
 export default {
+  disabled,
   black,
   white,
   primary: {

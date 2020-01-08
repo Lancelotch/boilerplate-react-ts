@@ -1,5 +1,6 @@
-import React, { useState, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { NavLink as RouterLink, LinkProps as RouterLinkProps } from "react-router-dom";
+import { useLocation} from "react-router";
 import clsx from "clsx";
 import { List, ListItem, Button } from "@material-ui/core";
 import useStyles from "./style";
@@ -23,22 +24,17 @@ interface IPropsNav {
 
 const SidebarNav: React.FC<IPropsNav> = props => {
   const { pages, className, ...rest } = props;
-  const [active, setActive] = useState<number>(1);
   const classes = useStyles();
-
-  const handleActive = function(indexActive: number){
-    setActive(indexActive);
-  }
+  const location = useLocation();
 
   return (
     <List {...rest} className={clsx(classes.root, className)}>
-      {pages.map((page, index) => (
+      {pages.map((page) => (
         <ListItem className={classes.item} disableGutters key={page.title}>
           <Button
-            className={`${classes.button} ${(active === index + 1) && classes.active}` }
+            className={`${classes.button} ${(page.href === location.pathname) && classes.active}` }
             component={CustomRouterLink}
             to={page.href}
-            onClick={()=>handleActive(index + 1)}
           >
             <div className={classes.icon}>{page.icon}</div>
             {page.title}

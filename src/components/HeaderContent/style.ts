@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   date: {
     paddingLeft: '0px',
     paddingRight: '0px'
+  },
+  float: {
+    float: 'right'
   }
 }));
 
