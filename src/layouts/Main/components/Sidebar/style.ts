@@ -2,14 +2,14 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme: any) => ({
   drawer: {
-    width: 240,
+    width: 241,
     [theme.breakpoints.up("lg")]: {
       marginTop: 64,
       height: "calc(100% - 64px)"
     }
   },
   root: {
-    backgroundColor: theme.palette.white,
+    background: theme.palette.primary.main,
     display: "flex",
     flexDirection: "column",
     height: "100%",

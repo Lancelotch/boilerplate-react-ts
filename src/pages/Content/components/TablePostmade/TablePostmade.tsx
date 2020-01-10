@@ -6,13 +6,12 @@ import {
   TableHead,
   TableRow,
   TableCell,
-  TableBody,
-  Typography,
-  Grid
+  TableBody
 } from "@material-ui/core";
 import useStyles from "./styles";
 import FieldContent from "../FieldContent";
 import FieldEngagement from "../FieldEngagement";
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 interface Props {
   title: string;
@@ -38,81 +37,70 @@ const rows = [
 const TablePostmade: React.FC<Props> = ({ data, title }) => {
   const classes = useStyles();
   return (
-    <React.Fragment>
-      <Grid container>
-        <Grid item md={12}>
-          <Typography variant="subtitle2" className={classes.subTitle}>
-            {title}
-          </Typography>
-        </Grid>
-        <Grid item md={12}>
-          <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <TableCell
-                    align="center"
-                    size="medium"
-                    style={{ width: "5%" }}
-                  >
-                    No.
+    <PerfectScrollbar>
+      <div className={classes.containerTable}>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" size="medium" style={{ width: "5%" }}>
+                  No.
+                </TableCell>
+                <TableCell
+                  align="center"
+                  size="medium"
+                  style={{ width: "55%" }}
+                >
+                  Content
+                </TableCell>
+                <TableCell
+                  align="center"
+                  size="medium"
+                  style={{ width: "10%" }}
+                >
+                  Type
+                </TableCell>
+                <TableCell
+                  align="center"
+                  size="medium"
+                  style={{ width: "10%" }}
+                >
+                  Reach
+                </TableCell>
+                <TableCell
+                  align="center"
+                  size="medium"
+                  style={{ width: "20%" }}
+                >
+                  Total Engagement
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row, index) => (
+                <TableRow key={row.name}>
+                  <TableCell align="center" size="small">
+                    {index + 1}
                   </TableCell>
-                  <TableCell
-                    align="center"
-                    size="medium"
-                    style={{ width: "55%" }}
-                  >
-                    Content
+                  <TableCell align="left" size="small">
+                    <FieldContent />
                   </TableCell>
-                  <TableCell
-                    align="center"
-                    size="medium"
-                    style={{ width: "10%" }}
-                  >
-                    Type
+                  <TableCell align="center" size="small">
+                    {row.fat}
                   </TableCell>
-                  <TableCell
-                    align="center"
-                    size="medium"
-                    style={{ width: "10%" }}
-                  >
-                    Reach
+                  <TableCell align="center" size="small">
+                    {row.carbs}
                   </TableCell>
-                  <TableCell
-                    align="center"
-                    size="medium"
-                    style={{ width: "20%" }}
-                  >
-                    Total Engagement
+                  <TableCell align="center" size="small">
+                    <FieldEngagement />
                   </TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row, index) => (
-                  <TableRow key={row.name}>
-                    <TableCell align="center" size="small">
-                      {index + 1}
-                    </TableCell>
-                    <TableCell align="left" size="small">
-                      <FieldContent />
-                    </TableCell>
-                    <TableCell align="center" size="small">
-                      {row.fat}
-                    </TableCell>
-                    <TableCell align="center" size="small">
-                      {row.carbs}
-                    </TableCell>
-                    <TableCell align="center" size="small">
-                      <FieldEngagement />
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Grid>
-      </Grid>
-    </React.Fragment>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    </PerfectScrollbar>
   );
 };
 

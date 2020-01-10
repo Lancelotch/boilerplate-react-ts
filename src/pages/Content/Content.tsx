@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import HideOnScroll from "../../components/HideOnScroll";
 import { Grid } from "@material-ui/core";
 import useStyles from "./styles";
 import CardAnalytic from "../../components/CardAnalytic";
 import LineChart from "../../components/LineChart";
-import {
-  HeaderContent,
-  CardItem,
-  HeatMapChart,
-  PieChart
-} from "../../components";
-import { Body } from "../../layouts/MainContent";
+import { CardItem, HeatMapChart, PieChart } from "../../components";
+import { Header, Body } from "../../layouts/MainContent";
 import { dummyAnalytics } from "../../helpers/dummyAnalytics";
 import { TablePostmade } from "./components";
 import { useObjectsContext } from "../../contexts/Objects/Objects";
-import Pdf from "react-to-pdf";
+import { useTheme } from "@material-ui/core/styles";
+import { useMediaQuery } from "@material-ui/core";
+import clsx from "clsx";
 
 const Content: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
   const ref = React.useRef<HTMLDivElement>(null);
   const [isPostmadeLoading, setPostmadeLoading] = useState(false);
   const [isPostmadeRefresh, setPostmadeRefresh] = useState(false);
@@ -39,10 +36,9 @@ const Content: React.FC = () => {
     console.log("click");
   };
 
-  const options = {
-    unit: "px",
-    format: [840, 1560]
-  };
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"), {
+    defaultMatches: true
+  });
 
   const handlePostmadePositif = function() {
     setPostmadeLoading(true);
@@ -51,25 +47,27 @@ const Content: React.FC = () => {
       setPostmadeRefresh(false);
     }, 2000);
   };
+
   return (
     <React.Fragment>
       <div>
-        <HideOnScroll threshold={80}>
-          <div className={classes.header}>
-            <HeaderContent
-              onClickObject={handleClickObject}
-              onClickTopic={handleClickTopic}
-              onSelectTopic={handleSelectTopic}
-              onDownload={handleDownload}
-              onChangeDate={handleChangeData}
-            />
-          </div>
-        </HideOnScroll>
-        <div ref={ref}>
+        <div
+          className={clsx({
+            [classes.header]: true,
+            [classes.mobileSize]: !isDesktop
+          })}
+        >
+          <Header
+            onClickObject={handleClickObject}
+            onClickTopic={handleClickTopic}
+            onSelectTopic={handleSelectTopic}
+            onDownload={handleDownload}
+            onChangeDate={handleChangeData}
+            targetRef={ref}
+          />
+        </div>
+        <div ref={ref} id="content-body">
           <Body>
-            <Pdf targetRef={ref} filename="generate.pdf" options={options}>
-              {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-            </Pdf>
             <Grid container spacing={3}>
               {dummyAnalytics.map(
                 ({ id, title, value, progress, progressValue }) => (

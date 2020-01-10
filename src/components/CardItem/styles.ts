@@ -9,8 +9,7 @@ const useStyles = makeStyles((theme: any) => ({
     backgroundColor: theme.palette.disabled, opacity: "0.5"
   },
   content: {
-    minHeight: theme.spacing(30),
-    display: "flex"
+    minHeight: theme.spacing(30)
   },
   loading: {
     color: theme.palette.primary.main

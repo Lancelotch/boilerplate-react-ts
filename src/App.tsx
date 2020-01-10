@@ -6,6 +6,7 @@ import { Router } from "react-router-dom";
 import Routes from "./routers/Routes";
 import "./internationalization";
 import "./assets/css/style.css";
+import 'react-perfect-scrollbar/dist/css/styles.css';
 import { RootContext, ObjectsContext } from "./contexts";
 
 const browserHistory = createBrowserHistory();

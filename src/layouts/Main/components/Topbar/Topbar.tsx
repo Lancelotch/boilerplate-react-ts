@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
-import { AppBar, Toolbar, Badge, Hidden, IconButton } from '@material-ui/core';
+import { AppBar, Toolbar, Hidden, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
-import InputIcon from '@material-ui/icons/Input';
 import useStyles from './style';
 
 interface Props {
@@ -15,7 +13,6 @@ interface Props {
 const Topbar:React.FC<Props> = (props) => {
   const { className, onSidebarOpen, ...rest } = props;
   const classes = useStyles();
-  const [notifications] = useState([]);
 
   return (
     <AppBar
@@ -25,28 +22,12 @@ const Topbar:React.FC<Props> = (props) => {
       <Toolbar>
         <RouterLink to="/">
           <img
-            alt="Logo"
-            src="/images/logos/logo--white.svg"
+            alt="NoLimit"
+            src="http://nolimit.id/assets/img/logo.png"
+            className={classes.logo}
           />
         </RouterLink>
         <div className={classes.flexGrow} />
-        <Hidden mdDown>
-          <IconButton color="inherit">
-            <Badge
-              badgeContent={notifications.length}
-              color="primary"
-              variant="dot"
-            >
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <IconButton
-            className={classes.signOutButton}
-            color="inherit"
-          >
-            <InputIcon />
-          </IconButton>
-        </Hidden>
         <Hidden lgUp>
           <IconButton
             color="inherit"

@@ -2,10 +2,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingTop: 56,
+    //paddingTop: 56,
     height: "100%",
     [theme.breakpoints.up("sm")]: {
-      paddingTop: 64
+     // paddingTop: 64
     }
   },
   shiftContent: {
@@ -13,6 +13,10 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     height: "100%"
+  },
+  topBarDesktop: {
+    width: 240,
+    left: 0
   }
 }));
 

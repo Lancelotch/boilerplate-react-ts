@@ -1,11 +1,14 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: any) => ({
-  table: {
-    width: '100%'
+  containerTable: {
+    minWidth: 1029
   },
   subTitle: {
     marginBottom: theme.spacing(1)
+  },
+  content: {
+    padding: 0
   }
 }));
 

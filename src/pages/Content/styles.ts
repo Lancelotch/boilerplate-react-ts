@@ -6,6 +6,9 @@ const useStyles = makeStyles((theme: any) => ({
     width: '100%',
     position: 'sticky',
     zIndex: 1,
+    top: 0
+  },
+  mobileSize: {
     top: theme.spacing(8)
   }
 }));

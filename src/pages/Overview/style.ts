@@ -4,9 +4,11 @@ const useStyles = makeStyles((theme: any) => ({
   header: {
     height: theme.spacing(15),
     width: '100%',
-    //position: '-webkit-sticky',
     position: 'sticky',
     zIndex: 1,
+    top: 0
+  },
+  mobileSize: {
     top: theme.spacing(8)
   }
 }));

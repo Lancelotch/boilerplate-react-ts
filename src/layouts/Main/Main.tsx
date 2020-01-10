@@ -30,8 +30,6 @@ const Main: React.FC<Props> = ({ children }) => {
   const shouldOpenSidebar = isDesktop ? true : openSidebar;
   const { isShowObjects } = useObjectsContext();
 
-  console.log("isShowObjects", isShowObjects);
-
   return (
     <div
       className={clsx({
@@ -39,7 +37,7 @@ const Main: React.FC<Props> = ({ children }) => {
         [classes.shiftContent]: isDesktop
       })}
     >
-      <Topbar onSidebarOpen={handleSidebarOpen} />
+      <Topbar onSidebarOpen={handleSidebarOpen} className={clsx({[classes.topBarDesktop]: isDesktop })} />
       <Sidebar
         onClose={handleSidebarClose}
         open={shouldOpenSidebar}

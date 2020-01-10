@@ -1,6 +1,7 @@
 import React from "react";
-import { Drawer, Grid, TextField, InputAdornment } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
+import { Drawer, Grid, TextField } from "@material-ui/core";
+//import SearchIcon from "@material-ui/icons/Search";
+//import InputAdornment from "@material-ui/core";
 import useStyles from "./styles";
 
 interface IProps {
