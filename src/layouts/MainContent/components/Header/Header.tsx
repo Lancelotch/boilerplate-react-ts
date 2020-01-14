@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from "react";
 import useStyles from "./style";
-import AddIcon from "@material-ui/icons/Add";
-import DateRangeOutlinedIcon from "@material-ui/icons/DateRangeOutlined";
 import CloudDownload from "@material-ui/icons/CloudDownload";
 import {
   Paper,
-  Button,
   Typography,
   Grid,
   Fab,
-  ButtonGroup,
   Popover
 } from "@material-ui/core";
-import Select from "../../../../components/CustomSelect";
 import { DateRangePicker } from "@matharumanpreet00/react-daterange-picker";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { months } from "../../../../helpers";
 import currentDate from "../../../../helpers/currentDate";
 import Pdf from "react-to-pdf";
+import { ObjectButton, TopicButton, ObjectCard } from "./components";
+import DateButton from "./components/DateButton";
 
 interface Props {
   onClickObject: () => void;
@@ -40,20 +36,18 @@ const Header: React.FC<Props> = ({
     const today = `${currentDate()} - ${currentDate()}`;
     setDateRange(today);
   }, []);
-  const classes = useStyles();
-  const [dateRange, setDateRange] = useState("");
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-    null
-  );
 
+  const classes = useStyles();
+
+  //Date Range
+  const [dateRange, setDateRange] = useState("");
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const handleChangeDate = (date: any) => {
     const startDate = `${date.startDate.getDate()} ${months(
       date.startDate.getMonth()
@@ -71,6 +65,16 @@ const Header: React.FC<Props> = ({
     unit: "px",
     format: [840, 1560]
   };
+  
+  //Object
+  const [anchorElObject, setAnchorElObject] = React.useState<HTMLButtonElement | null>(null);
+  const handleClickObject = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorElObject(event.currentTarget);
+  };
+  const handleCloseObject = function(){
+    setAnchorElObject(null);
+  }
+  const openObject = Boolean(anchorElObject);
 
   return (
     <div className={classes.root}>
@@ -80,48 +84,18 @@ const Header: React.FC<Props> = ({
         </Typography>
         <Grid container spacing={3}>
           <Grid item sm={2} md={2}>
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              fullWidth
-              onClick={onClickObject}
-              //className={classes.button}
-            >
-              <Grid container justify="space-between">
-                <Grid item>
-                  <Typography variant="inherit" className={classes.object}>
-                    Object
-                  </Typography>
-                </Grid>
-                <Grid item className={classes.icon}>
-                  <AddIcon />
-                </Grid>
-              </Grid>
-            </Button>
+            <ObjectButton onClick={handleClickObject} />
+            <ObjectCard open={openObject} anchorEl={anchorElObject} onClose={handleCloseObject} onSubmit={()=>console.log('submit')}/>
           </Grid>
           <Grid item sm={2} md={2}>
-            <Select onChange={e => console.log(e)} value={"10"} />
+            <TopicButton onClick={onClickTopic} />
           </Grid>
           <Grid item sm={2} md={4} />
           <Grid item sm={6} md={4}>
             <Grid container justify="space-between">
-              <Grid item sm={1} md={1} />
-              <Grid item sm={9} md={9}>
-                <ButtonGroup className={classes.float}>
-                  <Button size="small" startIcon={<DateRangeOutlinedIcon />}>
-                    <Typography variant="subtitle2">{dateRange}</Typography>
-                  </Button>
-                  <Button
-                    color="primary"
-                    size="small"
-                    variant="contained"
-                    onClick={handleClick}
-                    className={classes.date}
-                  >
-                    <ArrowDropDownIcon />
-                  </Button>
-                </ButtonGroup>
+              <Grid item sm={2} md={2} />
+              <Grid item sm={8} md={8}>
+                <DateButton className={classes.float} onClick={ handleClick } dateRange={dateRange} />
               </Grid>
               <Grid item sm={2} md={2}>
                 <Pdf

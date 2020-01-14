@@ -1,13 +1,13 @@
 import React from "react";
 import { Button, Grid, Typography } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import useStyles from "./styles";
 
 interface Props {
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
-const Object: React.FC<Props> = ({ onClick }) => {
+const ObjectButton: React.FC<Props> = ({ onClick }) => {
   const classes = useStyles();
   return (
     <Button
@@ -20,16 +20,16 @@ const Object: React.FC<Props> = ({ onClick }) => {
     >
       <Grid container justify="space-between">
         <Grid item>
-          <Typography variant="inherit" className={classes.object}>
+          <Typography className={classes.object}>
             Object
           </Typography>
         </Grid>
         <Grid item className={classes.icon}>
-          <AddIcon />
+          <ArrowDropDownIcon />
         </Grid>
       </Grid>
     </Button>
   );
 };
 
-export default Object;
+export default ObjectButton;

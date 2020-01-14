@@ -17,7 +17,7 @@ const Content: React.FC = () => {
   const theme = useTheme();
   const ref = React.useRef<HTMLDivElement>(null);
   const [isPostmadeLoading, setPostmadeLoading] = useState(false);
-  const [isPostmadeRefresh, setPostmadeRefresh] = useState(false);
+  const [isPostmadeRefresh, setPostmadeRefresh] = useState(true);
   const { handleShowObjects } = useObjectsContext();
 
   const handleClickObject = () => {

@@ -8,6 +8,7 @@ import MuiListItem from './MuiListItem';
 import MuiTextField from './MuiTextField';
 import MuiSelect from './MuiSelect';
 import MuiFab from './MuiFab';
+import MuiCardContent from './MuiCardContent';
 
 export default {
   MuiButton,
@@ -19,5 +20,6 @@ export default {
   MuiListItem,
   MuiTextField,
   MuiSelect,
-  MuiFab
+  MuiFab,
+  MuiCardContent
 };
