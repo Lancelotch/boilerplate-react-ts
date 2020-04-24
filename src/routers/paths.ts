@@ -1,11 +1,9 @@
 const LOGIN = '/sign-in';
-const OVERVIEW = '/overview';
-const CONTENT = '/content';
+const CRAWLBACK = '/crawlback';
 
 const paths = {
     LOGIN,
-    OVERVIEW,
-    CONTENT
+    CRAWLBACK
 }
 
 export default paths;

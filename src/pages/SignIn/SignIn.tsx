@@ -1,45 +1,41 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import FormLogin from '../../components/FormSignIn';
-import logoNoLimit from '../../assets/images/image2.png';
-import { Typography, Divider } from '@material-ui/core';
-import AuthenticationLayout from '../../layouts/Authentication';
-import useStyles from './style';
-import ButtonText from '../../components/ButtonText';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React from "react";
+import FormLogin from "./components/FormSignIn";
+import logoNoLimit from "../../assets/images/image2.png";
+import AuthenticationLayout from "../../layouts/Authentication";
+import useStyles from "./styles";
+import { useHistory } from "react-router-dom";
+
+interface SignInPayload {
+  email: string;
+  password: string;
+  companyName: string;
+}
 
 const SignIn: React.FC = () => {
-  const { t } = useTranslation();
+  const { push } = useHistory();
   const classes = useStyles();
 
-  const handleSubmit = function(){
-    console.log('submit');
-  }
+  const handleSubmit = function (request: SignInPayload) {
+    push("/crawlback");
+  };
 
-  const handleForgotPassword = function(){
-    console.log('forgot');
-  }
-
-  const handleSignup = function(){
-    console.log('sign up');
-  }
+  const handleForgotPassword = function () {
+    console.log("forgot");
+  };
 
   return (
-    <AuthenticationLayout>
-      <div className={classes.form}>
-        <img src={logoNoLimit} alt='logo_no_limit' />
-        <FormLogin onSubmit={handleSubmit} />
-        <ButtonText onClick={handleForgotPassword}>{t('authentication:signin.forgot_password')}</ButtonText>
-        <Divider
-          orientation='horizontal'
-          variant='middle'
-          className={classes.divider}
-        />
-        <Typography variant='subtitle1'>
-          {`${t('authentication:signin.accountless')} `}
-          <ButtonText onClick={handleSignup}>{t("authentication:signin.signup")}</ButtonText>
-        </Typography>
-      </div>
-    </AuthenticationLayout>
+    <React.Fragment>
+      <AuthenticationLayout>
+        <div className={classes.form}>
+          <img src={logoNoLimit} alt="logo_no_limit" />
+          <FormLogin
+            onSubmit={handleSubmit}
+            onClickForgotPassoword={handleForgotPassword}
+          />
+        </div>
+      </AuthenticationLayout>
+    </React.Fragment>
   );
 };
 

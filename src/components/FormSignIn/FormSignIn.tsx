@@ -1,31 +1,49 @@
 import React from "react";
-import { Button, TextField } from "@material-ui/core";
+import { Button, OutlinedInput } from "@material-ui/core";
+import { withStyles } from "@material-ui/styles";
 import { useFormik } from "formik";
 import validationSchema from "./validationSchema";
-import { useTranslation } from "react-i18next"; 
-import useStyles from './style';
+import { useTranslation } from "react-i18next";
+import useStyles from "./style";
+import ButtonText from "../ButtonText";
 
-interface Props{
-    onSubmit: (payload: object)=> void
+
+const Input = withStyles((theme: any)=>({
+  input: {
+    padding: theme.spacing(0, 2),
+    height: theme.spacing(6)
+  }
+}))(OutlinedInput);
+
+interface SignInPayload {
+  email: string;
+  password: string;
+  companyName: string;
 }
 
-const FormSignIn:React.FC<Props> = ({onSubmit}) => {
+interface Props {
+  onSubmit: (payload: SignInPayload) => void;
+  onClickForgotPassoword: () => void;
+}
+
+const FormSignIn: React.FC<Props> = ({ onSubmit, onClickForgotPassoword }) => {
   const { t } = useTranslation();
   const classes = useStyles();
-  const formik = useFormik({
+  const formik = useFormik<SignInPayload>({
     initialValues: {
       email: "",
-      password: ""
+      password: "",
+      companyName: "demo"
     },
     validationSchema: validationSchema,
-    onSubmit: (values: object) => {
+    onSubmit: (values: SignInPayload) => {
       console.log(values);
-      onSubmit(values)
+      onSubmit(values);
     }
   });
   const { handleSubmit, handleChange, values, errors, touched } = formik;
   return (
-    <React.Fragment>
+    <div className={classes.root}>
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -33,46 +51,53 @@ const FormSignIn:React.FC<Props> = ({onSubmit}) => {
         }}
         className={classes.form}
       >
-        <TextField
+        <Input
           name="email"
-          label={t('authentication:signin.placeholder_email')}
+          //label={t('authentication:signin.placeholder_email')}
           onChange={handleChange}
           value={values.email}
           autoComplete="email"
+          placeholder="Email / Phone Number"
           error={touched.email && errors.email ? true : false}
-          helperText={touched.email && errors.email ? errors.email : ""}
+          //helperText={touched.email && errors.email ? errors.email : ""}
           className={classes.textField}
           fullWidth
         />
-        <TextField
+        <Input
           name="password"
           type="password"
-          label={t('authentication:signin.placeholder_password')}
+          //label={t('authentication:signin.placeholder_password')}
           onChange={handleChange}
           value={values.password}
-          variant='standard'
+          placeholder="Password"
           autoComplete="current-password"
           error={touched.password && errors.password ? true : false}
-          helperText={
-            touched.password && errors.password ? errors.password : ""
-          }
+          // helperText={
+          //   touched.password && errors.password ? errors.password : ""
+          // }
           className={classes.textField}
           fullWidth
         />
-        <Button
-          variant="contained"
-          color="primary"
-          size="medium"
-          aria-label="add"
-          type="submit"
-          className={classes.submit}
-          fullWidth
-        >
-          {t('authentication:signin.submit')}
-        </Button>
+        <div className={classes.submit}>
+          <div style={{ float: "right" }}>
+            <ButtonText onClick={onClickForgotPassoword}>
+              {t("authentication:signin.forgot_password")}
+            </ButtonText>
+          </div>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            aria-label="add"
+            type="submit"
+            fullWidth
+          >
+            {t("authentication:signin.submit")}
+          </Button>
+        </div>
       </form>
-    </React.Fragment>
+    </div>
   );
-}
+};
 
-export default FormSignIn; 
+export default FormSignIn;

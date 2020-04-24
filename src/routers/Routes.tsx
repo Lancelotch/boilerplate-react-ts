@@ -5,8 +5,7 @@ import { Minimal as MinimalLayout, Main as MainLaylout } from "../layouts";
 import paths from "./paths";
 import {
   SignIn as SignInPage,
-  Overview as OverviewPage,
-  Content as ContentPage
+  Crawlback as CrawlbackPage
 } from "../pages";
 
 const Routes: React.FC = () => {
@@ -20,16 +19,10 @@ const Routes: React.FC = () => {
         path={paths.LOGIN}
       />
       <RouteWithLayout
-        component={OverviewPage}
+        component={CrawlbackPage}
         exact
         layout={MainLaylout}
-        path={paths.OVERVIEW}
-      />
-      <RouteWithLayout
-        component={ContentPage}
-        exact
-        layout={MainLaylout}
-        path={paths.CONTENT}
+        path={paths.CRAWLBACK}
       />
     </Switch>
   );

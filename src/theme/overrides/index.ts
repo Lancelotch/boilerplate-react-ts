@@ -9,6 +9,7 @@ import MuiTextField from './MuiTextField';
 import MuiSelect from './MuiSelect';
 import MuiFab from './MuiFab';
 import MuiCardContent from './MuiCardContent';
+import MuiInputLabel from './MuiInputLabel';
 
 export default {
   MuiButton,
@@ -21,5 +22,6 @@ export default {
   MuiTextField,
   MuiSelect,
   MuiFab,
-  MuiCardContent
+  MuiCardContent,
+  MuiInputLabel
 };
